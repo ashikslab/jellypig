@@ -44,15 +44,6 @@ final class LibraryCoordinator<Element: Poster>: NavigationCoordinatable {
         PagingLibraryView(viewModel: viewModel)
     }
 
-    #if os(tvOS)
-    func makeItem(item: BaseItemDto) -> NavigationViewCoordinator<ItemCoordinator> {
-        NavigationViewCoordinator(ItemCoordinator(item: item))
-    }
-
-    func makeLibrary(viewModel: PagingLibraryViewModel<BaseItemDto>) -> NavigationViewCoordinator<LibraryCoordinator<BaseItemDto>> {
-        NavigationViewCoordinator(LibraryCoordinator<BaseItemDto>(viewModel: viewModel))
-    }
-    #else
     func makeItem(item: BaseItemDto) -> ItemCoordinator {
         ItemCoordinator(item: item)
     }
@@ -61,6 +52,7 @@ final class LibraryCoordinator<Element: Poster>: NavigationCoordinatable {
         LibraryCoordinator<BaseItemDto>(viewModel: viewModel)
     }
 
+    #if !os(tvOS)
     func makeFilter(parameters: FilterCoordinator.Parameters) -> NavigationViewCoordinator<FilterCoordinator> {
         NavigationViewCoordinator(FilterCoordinator(parameters: parameters))
     }

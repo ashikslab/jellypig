@@ -30,15 +30,6 @@ final class HomeCoordinator: NavigationCoordinatable {
     var library = makeLibrary
     #endif
 
-    #if os(tvOS)
-    func makeItem(item: BaseItemDto) -> NavigationViewCoordinator<ItemCoordinator> {
-        NavigationViewCoordinator(ItemCoordinator(item: item))
-    }
-
-    func makeLibrary(viewModel: PagingLibraryViewModel<BaseItemDto>) -> NavigationViewCoordinator<LibraryCoordinator<BaseItemDto>> {
-        NavigationViewCoordinator(LibraryCoordinator<BaseItemDto>(viewModel: viewModel))
-    }
-    #else
     func makeItem(item: BaseItemDto) -> ItemCoordinator {
         ItemCoordinator(item: item)
     }
@@ -46,7 +37,6 @@ final class HomeCoordinator: NavigationCoordinatable {
     func makeLibrary(viewModel: PagingLibraryViewModel<BaseItemDto>) -> LibraryCoordinator<BaseItemDto> {
         LibraryCoordinator(viewModel: viewModel)
     }
-    #endif
 
     @ViewBuilder
     func makeStart() -> some View {

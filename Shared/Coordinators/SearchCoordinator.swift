@@ -31,15 +31,6 @@ final class SearchCoordinator: NavigationCoordinatable {
     var filter = makeFilter
     #endif
 
-    #if os(tvOS)
-    func makeItem(item: BaseItemDto) -> NavigationViewCoordinator<ItemCoordinator> {
-        NavigationViewCoordinator(ItemCoordinator(item: item))
-    }
-
-    func makeLibrary(viewModel: PagingLibraryViewModel<BaseItemDto>) -> NavigationViewCoordinator<LibraryCoordinator<BaseItemDto>> {
-        NavigationViewCoordinator(LibraryCoordinator(viewModel: viewModel))
-    }
-    #else
     func makeItem(item: BaseItemDto) -> ItemCoordinator {
         ItemCoordinator(item: item)
     }
@@ -48,6 +39,7 @@ final class SearchCoordinator: NavigationCoordinatable {
         LibraryCoordinator(viewModel: viewModel)
     }
 
+    #if !os(tvOS)
     func makeFilter(parameters: FilterCoordinator.Parameters) -> NavigationViewCoordinator<FilterCoordinator> {
         NavigationViewCoordinator(FilterCoordinator(parameters: parameters))
     }
