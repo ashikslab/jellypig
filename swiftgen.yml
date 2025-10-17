@@ -3,3 +3,9 @@ strings:
   outputs:
     - templateName: structured-swift5
       output: Shared/Strings/Strings.swift
+
+xcassets:
+  inputs: "jellypig tvOS/Resources/Assets.xcassets"
+  outputs:
+    - templateName: swift5
+      output: Shared/Generated/Images+Generated.swift
