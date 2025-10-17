@@ -21,21 +21,36 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
 
         // Use channel API for channels and channel folders
         if let parent = parent as? BaseItemDto, parent.type == .channel || parent.type == .channelFolderItem {
+            print("🔵 DEBUG: Using channel API for parent type: \(parent.type), name: \(parent.name ?? "nil"), id: \(parent.id ?? "nil")")
             return try await getChannelItems(page: page, parent: parent)
         }
 
+        print(
+            "🟢 DEBUG: Using regular API, parent: \(String(describing: (parent as? BaseItemDto)?.name)), type: \(String(describing: (parent as? BaseItemDto)?.type))"
+        )
         let parameters = itemParameters(for: page)
+        print("📋 DEBUG: includeItemTypes: \(parameters.includeItemTypes ?? [])")
         let request = Paths.getItemsByUserID(userID: userSession.user.id, parameters: parameters)
         let response = try await userSession.client.send(request)
+
+        print("📦 DEBUG: API returned \(response.value.items?.count ?? 0) items")
+        let rawItems = response.value.items ?? []
+        for item in rawItems.prefix(10) {
+            print("  - Item: \(item.name ?? "nil"), type: \(item.type), collectionType: \(item.collectionType?.rawValue ?? "nil")")
+        }
 
         // 1 - only care to keep collections that hold valid items
         // 2 - if parent is type `folder`, then we are in a folder-view
         //     context so change `collectionFolder` types to `folder`
         //     for better view handling
-        let items = (response.value.items ?? [])
+        let items = rawItems
             .filter { item in
                 if let collectionType = item.collectionType {
-                    return CollectionType.supportedCases.contains(collectionType)
+                    let supported = CollectionType.supportedCases.contains(collectionType)
+                    if !supported {
+                        print("❌ DEBUG: Filtered out \(item.name ?? "nil") - unsupported collectionType: \(collectionType.rawValue)")
+                    }
+                    return supported
                 }
 
                 return true
@@ -48,6 +63,7 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
                 return item
             }
 
+        print("✅ DEBUG: After filtering, returning \(items.count) items")
         return items
     }
 
@@ -56,6 +72,7 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
     private func getChannelItems(page: Int, parent: BaseItemDto) async throws -> [BaseItemDto] {
 
         guard let channelID = parent.channelID ?? parent.id else {
+            print("❌ DEBUG: No channelID found for parent: \(parent.name ?? "nil")")
             return []
         }
 
@@ -66,6 +83,9 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
         // If parent is a channel folder, set the folderID
         if parent.type == .channelFolderItem {
             parameters.folderID = parent.id
+            print("📁 DEBUG: Channel folder - channelID: \(channelID), folderID: \(parent.id ?? "nil")")
+        } else {
+            print("📺 DEBUG: Channel root - channelID: \(channelID)")
         }
 
         // Page size
@@ -74,6 +94,8 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
 
         let request = Paths.getChannelItems(channelID: channelID, parameters: parameters)
         let response = try await userSession.client.send(request)
+
+        print("✅ DEBUG: Channel API returned \(response.value.items?.count ?? 0) items")
 
         return response.value.items ?? []
     }
