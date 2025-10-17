@@ -60,7 +60,7 @@ struct VideoPlayer: View {
                         {
                             videoPlayerManager.selectNextViewModel()
                         } else {
-                            router.popLast()
+                            router.dismissCoordinator()
                         }
                     }
                 }

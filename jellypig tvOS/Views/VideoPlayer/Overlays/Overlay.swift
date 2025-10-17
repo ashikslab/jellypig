@@ -110,7 +110,7 @@ extension VideoPlayer {
 
             if isPresentingOverlay && currentOverlayType == .confirmClose {
                 proxy.stop()
-                router.popLast()
+                router.dismissCoordinator()
             } else if isPresentingOverlay && currentOverlayType == .smallMenu {
                 currentOverlayType = .main
             } else {

@@ -28,7 +28,7 @@ extension VideoPlayer {
                     ProgressView()
 
                     Button {
-                        router.popLast()
+                        router.dismissCoordinator()
                     } label: {
                         Text(L10n.cancel)
                             .foregroundColor(.red)
