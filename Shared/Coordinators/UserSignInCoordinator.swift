@@ -23,11 +23,11 @@ final class UserSignInCoordinator: NavigationCoordinatable {
     @Root
     var start = makeStart
 
-    @Route(.modal)
+    @Route(.push)
     var quickConnect = makeQuickConnect
 
     #if os(iOS)
-    @Route(.modal)
+    @Route(.push)
     var security = makeSecurity
     #endif
 

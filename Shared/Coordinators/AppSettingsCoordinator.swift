@@ -27,7 +27,7 @@ final class AppSettingsCoordinator: NavigationCoordinatable {
     #endif
 
     #if os(tvOS)
-    @Route(.modal)
+    @Route(.push)
     var log = makeLog
 
     @Route(.fullScreen)

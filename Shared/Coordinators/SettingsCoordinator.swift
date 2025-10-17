@@ -26,11 +26,11 @@ final class SettingsCoordinator: NavigationCoordinatable {
     var playbackQualitySettings = makePlaybackQualitySettings
     @Route(.push)
     var quickConnect = makeQuickConnectAuthorize
-    @Route(.modal)
+    @Route(.push)
     var resetUserPassword = makeResetUserPassword
     @Route(.push)
     var localSecurity = makeLocalSecurity
-    @Route(.modal)
+    @Route(.push)
     var photoPicker = makePhotoPicker
     @Route(.push)
     var userProfile = makeUserProfileSettings
@@ -51,12 +51,12 @@ final class SettingsCoordinator: NavigationCoordinatable {
     var videoPlayerSettings = makeVideoPlayerSettings
     @Route(.push)
     var customDeviceProfileSettings = makeCustomDeviceProfileSettings
-    @Route(.modal)
+    @Route(.push)
     var itemOverviewView = makeItemOverviewView
 
-    @Route(.modal)
+    @Route(.push)
     var editCustomDeviceProfile = makeEditCustomDeviceProfile
-    @Route(.modal)
+    @Route(.push)
     var createCustomDeviceProfile = makeCreateCustomDeviceProfile
 
     @Route(.push)
@@ -69,19 +69,19 @@ final class SettingsCoordinator: NavigationCoordinatable {
     #endif
 
     #if os(tvOS)
-    @Route(.modal)
+    @Route(.push)
     var customizeViewsSettings = makeCustomizeViewsSettings
-    @Route(.modal)
+    @Route(.push)
     var experimentalSettings = makeExperimentalSettings
-    @Route(.modal)
+    @Route(.push)
     var log = makeLog
-    @Route(.modal)
+    @Route(.push)
     var serverDetail = makeServerDetail
-    @Route(.modal)
+    @Route(.push)
     var videoPlayerSettings = makeVideoPlayerSettings
-    @Route(.modal)
+    @Route(.push)
     var playbackQualitySettings = makePlaybackQualitySettings
-    @Route(.modal)
+    @Route(.push)
     var userProfile = makeUserProfileSettings
     #endif
 

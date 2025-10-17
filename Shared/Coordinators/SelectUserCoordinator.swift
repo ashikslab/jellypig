@@ -17,13 +17,13 @@ final class SelectUserCoordinator: NavigationCoordinatable {
     @Root
     var start = makeStart
 
-    @Route(.modal)
+    @Route(.push)
     var advancedSettings = makeAdvancedSettings
-    @Route(.modal)
+    @Route(.push)
     var connectToServer = makeConnectToServer
-    @Route(.modal)
+    @Route(.push)
     var editServer = makeEditServer
-    @Route(.modal)
+    @Route(.push)
     var userSignIn = makeUserSignIn
 
     func makeAdvancedSettings() -> NavigationViewCoordinator<AppSettingsCoordinator> {
