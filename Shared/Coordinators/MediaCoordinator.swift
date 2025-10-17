@@ -18,9 +18,9 @@ final class MediaCoordinator: NavigationCoordinatable {
     @Root
     var start = makeStart
     #if os(tvOS)
-    @Route(.modal)
+    @Route(.push)
     var library = makeLibrary
-    @Route(.modal)
+    @Route(.push)
     var liveTV = makeLiveTV
     #else
     @Route(.push)
