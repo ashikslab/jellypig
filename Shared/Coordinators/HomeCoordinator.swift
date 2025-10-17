@@ -19,9 +19,9 @@ final class HomeCoordinator: NavigationCoordinatable {
     var start = makeStart
 
     #if os(tvOS)
-    @Route(.modal)
+    @Route(.push)
     var item = makeItem
-    @Route(.modal)
+    @Route(.push)
     var library = makeLibrary
     #else
     @Route(.push)

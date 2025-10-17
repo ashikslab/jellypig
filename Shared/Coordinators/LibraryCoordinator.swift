@@ -20,7 +20,7 @@ final class LibraryCoordinator<Element: Poster>: NavigationCoordinatable {
     var start = makeStart
 
     #if os(tvOS)
-    @Route(.modal)
+    @Route(.push)
     var item = makeItem
     @Route(.push)
     var library = makeLibrary

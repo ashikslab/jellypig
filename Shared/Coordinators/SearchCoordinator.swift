@@ -18,9 +18,9 @@ final class SearchCoordinator: NavigationCoordinatable {
     @Root
     var start = makeStart
     #if os(tvOS)
-    @Route(.modal)
+    @Route(.push)
     var item = makeItem
-    @Route(.modal)
+    @Route(.push)
     var library = makeLibrary
     #else
     @Route(.push)
