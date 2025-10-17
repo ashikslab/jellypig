@@ -14,7 +14,7 @@ import Pulse
 
 // TODO: cleanup
 extension Container {
-    var logService: Factory<Logger> { self { Logger(label: "org.jellyfin.swiftfin") }.singleton }
+    var logService: Factory<Logger> { self { Logger(label: "org.ashik.jellypig") }.singleton }
 
     var pulseNetworkLogger: Factory<NetworkLogger> {
         self {
