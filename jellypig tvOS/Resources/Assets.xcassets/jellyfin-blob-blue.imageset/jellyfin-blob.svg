@@ -3,8 +3,8 @@
     <title>Combined Shape</title>
     <defs>
         <linearGradient x1="19.2532352%" y1="40.8257212%" x2="100.658798%" y2="88.6971024%" id="linearGradient-1">
-            <stop stop-color="#1F4EA7" offset="0%"></stop>
-            <stop stop-color="#00DDFF" offset="100%"></stop>
+            <stop stop-color="#C8197C" offset="0%"></stop>
+            <stop stop-color="#FF1493" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Primary" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
