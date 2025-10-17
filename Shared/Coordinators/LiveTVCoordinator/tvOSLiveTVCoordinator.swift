@@ -13,24 +13,25 @@ import SwiftUI
 final class LiveTVCoordinator: TabCoordinatable {
 
     var child = TabChild(startingItems: [
-        \LiveTVCoordinator.programs,
         \LiveTVCoordinator.channels,
+        \LiveTVCoordinator.programGuide,
     ])
 
-    @Route(tabItem: makeProgramsTab)
-    var programs = makePrograms
+    @Route(tabItem: makeProgramGuideTab)
+    var programGuide = makeProgramGuide
+
     @Route(tabItem: makeChannelsTab)
     var channels = makeChannels
 
-    func makePrograms() -> VideoPlayerWrapperCoordinator {
+    func makeProgramGuide() -> VideoPlayerWrapperCoordinator {
         VideoPlayerWrapperCoordinator {
-            ProgramsView()
+            ProgramGuideView()
         }
     }
 
     @ViewBuilder
-    func makeProgramsTab(isActive: Bool) -> some View {
-        Label(L10n.programs, systemImage: "tv")
+    func makeProgramGuideTab(isActive: Bool) -> some View {
+        Label("Guide", systemImage: "list.bullet.rectangle")
     }
 
     func makeChannels() -> VideoPlayerWrapperCoordinator {

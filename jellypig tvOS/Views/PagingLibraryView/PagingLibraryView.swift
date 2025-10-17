@@ -349,7 +349,8 @@ struct PagingLibraryView<Element: Poster & Identifiable>: View {
 
     var body: some View {
         ZStack {
-            Color.clear
+            Color(red: 0.15, green: 0.05, blue: 0.1)
+                .ignoresSafeArea()
 
             if cinematicBackground {
                 CinematicBackgroundView(viewModel: cinematicBackgroundViewModel)

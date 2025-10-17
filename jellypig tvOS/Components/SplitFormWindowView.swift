@@ -14,18 +14,23 @@ struct SplitFormWindowView: View {
     private var descriptionView: () -> any View
 
     var body: some View {
-        HStack {
+        ZStack {
+            Color(red: 0.15, green: 0.05, blue: 0.1)
+                .ignoresSafeArea()
 
-            descriptionView()
-                .eraseToAnyView()
-                .frame(maxWidth: .infinity)
+            HStack {
 
-            Form {
-                contentView()
+                descriptionView()
                     .eraseToAnyView()
+                    .frame(maxWidth: .infinity)
+
+                Form {
+                    contentView()
+                        .eraseToAnyView()
+                }
+                .padding(.top)
+                .scrollClipDisabled()
             }
-            .padding(.top)
-            .scrollClipDisabled()
         }
     }
 }

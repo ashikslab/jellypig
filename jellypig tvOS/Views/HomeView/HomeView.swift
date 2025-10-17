@@ -53,8 +53,8 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            // This keeps the ErrorView vertically aligned with the PagingLibraryView
-            Color.clear
+            Color(red: 0.15, green: 0.05, blue: 0.1)
+                .ignoresSafeArea()
 
             switch viewModel.state {
             case .content:

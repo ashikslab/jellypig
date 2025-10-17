@@ -41,6 +41,9 @@ struct ChannelLibraryView: View {
 
     var body: some View {
         ZStack {
+            Color(red: 0.15, green: 0.05, blue: 0.1)
+                .ignoresSafeArea()
+
             switch viewModel.state {
             case .content:
                 if viewModel.elements.isEmpty {

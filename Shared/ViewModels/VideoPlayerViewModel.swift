@@ -66,7 +66,7 @@ final class VideoPlayerViewModel: ViewModel {
         let configuration = VLCVideoPlayer.Configuration(url: playbackURL)
         configuration.autoPlay = true
         configuration.startTime = .seconds(max(0, item.startTimeSeconds - Defaults[.VideoPlayer.resumeOffset]))
-        if self.audioStreams[0].path != nil {
+        if !self.audioStreams.isEmpty, self.audioStreams[0].path != nil {
             configuration.audioIndex = .absolute(selectedAudioStreamIndex)
         }
         configuration.subtitleIndex = .absolute(selectedSubtitleStreamIndex)

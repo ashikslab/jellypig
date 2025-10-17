@@ -111,6 +111,9 @@ struct SearchView: View {
 
     var body: some View {
         ZStack {
+            Color(red: 0.15, green: 0.05, blue: 0.1)
+                .ignoresSafeArea()
+
             switch viewModel.state {
             case .initial:
                 suggestionsView
