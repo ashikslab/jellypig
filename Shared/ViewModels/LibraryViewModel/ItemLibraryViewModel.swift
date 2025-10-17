@@ -19,6 +19,11 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
 
     override func get(page: Int) async throws -> [BaseItemDto] {
 
+        // Use channel API for channels and channel folders
+        if let parent = parent as? BaseItemDto, parent.type == .channel || parent.type == .channelFolderItem {
+            return try await getChannelItems(page: page, parent: parent)
+        }
+
         let parameters = itemParameters(for: page)
         let request = Paths.getItemsByUserID(userID: userSession.user.id, parameters: parameters)
         let response = try await userSession.client.send(request)
@@ -44,6 +49,33 @@ final class ItemLibraryViewModel: PagingLibraryViewModel<BaseItemDto> {
             }
 
         return items
+    }
+
+    // MARK: getChannelItems
+
+    private func getChannelItems(page: Int, parent: BaseItemDto) async throws -> [BaseItemDto] {
+
+        guard let channelID = parent.channelID ?? parent.id else {
+            return []
+        }
+
+        var parameters = Paths.GetChannelItemsParameters()
+        parameters.userID = userSession.user.id
+        parameters.fields = .MinimumFields
+
+        // If parent is a channel folder, set the folderID
+        if parent.type == .channelFolderItem {
+            parameters.folderID = parent.id
+        }
+
+        // Page size
+        parameters.limit = pageSize
+        parameters.startIndex = page * pageSize
+
+        let request = Paths.getChannelItems(channelID: channelID, parameters: parameters)
+        let response = try await userSession.client.send(request)
+
+        return response.value.items ?? []
     }
 
     // MARK: item parameters
