@@ -70,7 +70,7 @@ final class MainCoordinator: NavigationCoordinatable {
         logger.info("Signed in")
 
         withAnimation(.linear(duration: 0.1)) {
-            let _ = root(\.mainTab)
+            _ = root(\.mainTab)
         }
     }
 
@@ -79,7 +79,7 @@ final class MainCoordinator: NavigationCoordinatable {
         logger.info("Signed out")
 
         withAnimation(.linear(duration: 0.1)) {
-            let _ = root(\.selectUser)
+            _ = root(\.selectUser)
         }
     }
 

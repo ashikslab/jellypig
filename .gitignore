@@ -100,3 +100,4 @@ Thumbs.db
 Shared/Generated/Strings.swift
 
 .idea
+Carthage/Build/

@@ -88,7 +88,7 @@ final class MainCoordinator: NavigationCoordinatable {
         logger.info("Signed in")
 
         withAnimation(.linear(duration: 0.1)) {
-            let _ = root(\.serverCheck)
+            _ = root(\.serverCheck)
         }
     }
 
@@ -97,7 +97,7 @@ final class MainCoordinator: NavigationCoordinatable {
         logger.info("Signed out")
 
         withAnimation(.linear(duration: 0.1)) {
-            let _ = root(\.selectUser)
+            _ = root(\.selectUser)
         }
     }
 
