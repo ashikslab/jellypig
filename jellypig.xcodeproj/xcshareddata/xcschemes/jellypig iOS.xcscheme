@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5358705F2669D21600D05A09"
-               BuildableName = "Swiftfin tvOS.app"
-               BlueprintName = "Swiftfin tvOS"
-               ReferencedContainer = "container:Swiftfin.xcodeproj">
+               BlueprintIdentifier = "5377CBF0263B596A003A4E83"
+               BuildableName = "jellypig iOS.app"
+               BlueprintName = "jellypig iOS"
+               ReferencedContainer = "container:jellypig.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5358705F2669D21600D05A09"
-            BuildableName = "Swiftfin tvOS.app"
-            BlueprintName = "Swiftfin tvOS"
-            ReferencedContainer = "container:Swiftfin.xcodeproj">
+            BlueprintIdentifier = "5377CBF0263B596A003A4E83"
+            BuildableName = "jellypig iOS.app"
+            BlueprintName = "jellypig iOS"
+            ReferencedContainer = "container:jellypig.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5358705F2669D21600D05A09"
-            BuildableName = "Swiftfin tvOS.app"
-            BlueprintName = "Swiftfin tvOS"
-            ReferencedContainer = "container:Swiftfin.xcodeproj">
+            BlueprintIdentifier = "5377CBF0263B596A003A4E83"
+            BuildableName = "jellypig iOS.app"
+            BlueprintName = "jellypig iOS"
+            ReferencedContainer = "container:jellypig.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
