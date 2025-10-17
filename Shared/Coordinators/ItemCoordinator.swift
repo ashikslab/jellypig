@@ -40,7 +40,7 @@ final class ItemCoordinator: NavigationCoordinatable {
     var itemOverview = makeItemOverview
     @Route(.fullScreen)
     var mediaSourceInfo = makeMediaSourceInfo
-    @Route(.fullScreen)
+    @Route(.push)
     var videoPlayer = makeVideoPlayer
     #endif
 
@@ -90,8 +90,8 @@ final class ItemCoordinator: NavigationCoordinatable {
     #endif
 
     #if os(tvOS)
-    func makeVideoPlayer(manager: VideoPlayerManager) -> NavigationViewCoordinator<VideoPlayerCoordinator> {
-        NavigationViewCoordinator(VideoPlayerCoordinator(manager: manager))
+    func makeVideoPlayer(manager: VideoPlayerManager) -> VideoPlayerCoordinator {
+        VideoPlayerCoordinator(manager: manager)
     }
     #endif
 
